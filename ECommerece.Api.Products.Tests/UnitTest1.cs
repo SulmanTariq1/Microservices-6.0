@@ -16,7 +16,7 @@ namespace ECommerce.Api.Products.Tests
                 .UseInMemoryDatabase(nameof(GetProductsReturnsAllProducts))
                 .Options; 
             var dbContext = new ProductDbContext(options);
-            CreateProducts(dbContext);
+            CreateProducts(dbContext,1);
 
             var productProfile = new ProductProfile();
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(productProfile));
@@ -37,7 +37,7 @@ namespace ECommerce.Api.Products.Tests
                 .UseInMemoryDatabase(nameof(GetProductReturnsProductUsingValidId))
                 .Options;
             var dbContext = new ProductDbContext(options);
-            CreateProducts(dbContext);
+            CreateProducts(dbContext,11);
 
             var productProfile = new ProductProfile();
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(productProfile));
@@ -59,7 +59,7 @@ namespace ECommerce.Api.Products.Tests
                 .UseInMemoryDatabase(nameof(GetProductReturnsProductUsingInvalidId))
                 .Options;
             var dbContext = new ProductDbContext(options);
-            CreateProducts(dbContext);
+            CreateProducts(dbContext,21);
 
             var productProfile = new ProductProfile();
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(productProfile));
@@ -73,9 +73,10 @@ namespace ECommerce.Api.Products.Tests
             Assert.NotNull(product.Error);
         }
 
-        private void CreateProducts(ProductDbContext dbContext)
+        private void CreateProducts(ProductDbContext dbContext, int i)
         {
-            for (int i = 1; i <= 10; i++)
+            int total = i + 10;
+            for (i = 1; i <= total; i++)
             {
                 dbContext.Products.Add(new Product()
                 {
