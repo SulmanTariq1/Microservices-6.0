@@ -9,26 +9,26 @@ namespace ECommerce.Api.Products.Tests
 {
     public class ProductsServiceTest
     {
-        //[Fact]
-        //public async Task GetProductsReturnsAllProducts()
-        //{
-        //    var options = new DbContextOptionsBuilder<ProductDbContext>()
-        //        .UseInMemoryDatabase(nameof(GetProductsReturnsAllProducts))
-        //        .Options; 
-        //    var dbContext = new ProductDbContext(options);
-        //    CreateProducts(dbContext,1);
+        [Fact]
+        public async Task GetProductsReturnsAllProducts()
+        {
+            var options = new DbContextOptionsBuilder<ProductDbContext>()
+                .UseInMemoryDatabase(nameof(GetProductsReturnsAllProducts))
+                .Options; 
+            var dbContext = new ProductDbContext(options);
+            CreateProducts(dbContext,1);
 
-        //    var productProfile = new ProductProfile();
-        //    var configuration = new MapperConfiguration(cfg => cfg.AddProfile(productProfile));
-        //    var mapper = new Mapper(configuration);
+            var productProfile = new ProductProfile();
+            var configuration = new MapperConfiguration(cfg => cfg.AddProfile(productProfile));
+            var mapper = new Mapper(configuration);
 
-        //    var productsProvider = new ProductProvider(dbContext, null, mapper);
+            var productsProvider = new ProductProvider(dbContext, null, mapper);
 
-        //    var product = await productsProvider.getProductsAsync();
-        //    Assert.True(product.IsSuccess);
-        //    Assert.True(product.products.Any());
-        //    Assert.Null(product.Error);
-        //}
+            var product = await productsProvider.getProductsAsync();
+            Assert.True(product.IsSuccess);
+            Assert.True(product.products.Any());
+            Assert.Null(product.Error);
+        }
 
         [Fact]
         public async Task GetProductReturnsProductUsingValidId()
@@ -37,7 +37,7 @@ namespace ECommerce.Api.Products.Tests
                 .UseInMemoryDatabase(nameof(GetProductReturnsProductUsingValidId))
                 .Options;
             var dbContext = new ProductDbContext(options);
-            CreateProducts(dbContext, 11);
+            CreateProducts(dbContext,11);
 
             var productProfile = new ProductProfile();
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(productProfile));
@@ -52,26 +52,26 @@ namespace ECommerce.Api.Products.Tests
             Assert.Null(product.Error);
         }
 
-        //[Fact]
-        //public async Task GetProductReturnsProductUsingInvalidId()
-        //{
-        //    var options = new DbContextOptionsBuilder<ProductDbContext>()
-        //        .UseInMemoryDatabase(nameof(GetProductReturnsProductUsingInvalidId))
-        //        .Options;
-        //    var dbContext = new ProductDbContext(options);
-        //    CreateProducts(dbContext,21);
+        [Fact]
+        public async Task GetProductReturnsProductUsingInvalidId()
+        {
+            var options = new DbContextOptionsBuilder<ProductDbContext>()
+                .UseInMemoryDatabase(nameof(GetProductReturnsProductUsingInvalidId))
+                .Options;
+            var dbContext = new ProductDbContext(options);
+            CreateProducts(dbContext,21);
 
-        //    var productProfile = new ProductProfile();
-        //    var configuration = new MapperConfiguration(cfg => cfg.AddProfile(productProfile));
-        //    var mapper = new Mapper(configuration);
+            var productProfile = new ProductProfile();
+            var configuration = new MapperConfiguration(cfg => cfg.AddProfile(productProfile));
+            var mapper = new Mapper(configuration);
 
-        //    var productsProvider = new ProductProvider(dbContext, null, mapper);
+            var productsProvider = new ProductProvider(dbContext, null, mapper);
 
-        //    var product = await productsProvider.getProductAsync(-1);
-        //    Assert.False(product.IsSuccess);
-        //    Assert.Null(product.product);
-        //    Assert.NotNull(product.Error);
-        //}
+            var product = await productsProvider.getProductAsync(-1);
+            Assert.False(product.IsSuccess);
+            Assert.Null(product.product);
+            Assert.NotNull(product.Error);
+        }
 
         private void CreateProducts(ProductDbContext dbContext, int i)
         {
