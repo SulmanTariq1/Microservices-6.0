@@ -31,43 +31,6 @@ namespace ECommerece.Api.Products.DB.Providers
             }
         }
 
-        
-        //async Task<(bool IsSuccess, IEnumerable<Models.Product>? products, string? Error)> IProductProvider.getProductsAsync()
-        //{
-        //    try
-        //    {
-        //        var products = await DbContext.Products.ToListAsync();
-        //        if (products != null && products.Any())
-        //        {
-        //            var restult = Mapper.Map<IEnumerable<DB.Product>, IEnumerable<Models.Product>>(products);
-        //            return (true, restult, null);
-        //        }
-        //        return (false, null, "Not Found");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Logger?.LogError(ex.ToString());
-        //        return (false, null, ex.Message);
-        //    }
-        //}
-
-        //async Task<(bool IsSuccess, Models.Product? product, string Error)> IProductProvider.getProductAsync(int id)
-        //{
-        //    var product = await DbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
-        //    try{
-        //        if (product != null)
-        //        {
-        //            var restult = Mapper.Map<DB.Product, Models.Product>(product);
-        //            return (true, restult, null);
-        //        }
-        //        return (false, null, "Not Found");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Logger?.LogError(ex.ToString());
-        //        return (false, null, ex.Message);
-        //    }
-        //}
 
         public async Task<(bool IsSuccess, IEnumerable<Models.Product>? products, string Error)> getProductsAsync()
         {
